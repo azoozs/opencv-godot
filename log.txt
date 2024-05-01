@@ -1,0 +1,172 @@
+C:\Users\User\Desktop\Godot_Test\godot_cpp\godot-4.2>scons platform=android target=template_debug arch=arm64 -j16
+scons: Reading SConscript files ...
+Checking for Android NDK...
+Building for platform "android", architecture "arm64", target "template_debug".
+________________________________________________________________________________________________________________________________________________________
+
+ Custom Module C++ for Godot Android  arm64 ######################################################################################
+
+________________________________________________________________________________________________________________________________________________________
+Checking for C header file mntent.h... (cached) yes
+scons: done reading SConscript files.
+scons: Building targets ...
+[  0%] Compiling shared platform\android\os_android.cpp ...
+[  0%] Compiling shared platform\android\android_input_handler.cpp ...
+[  0%] Compiling shared platform\android\file_access_android.cpp ...
+[  0%] Compiling shared platform\android\file_access_filesystem_jandroid.cpp ...
+[  0%] Compiling shared platform\android\audio_driver_opensl.cpp ...
+[  0%] Compiling shared platform\android\dir_access_jandroid.cpp ...
+[  0%] Compiling shared platform\android\tts_android.cpp ...
+[  1%] Compiling shared platform\android\thread_jandroid.cpp ...
+[  1%] Compiling shared platform\android\net_socket_android.cpp ...
+[  1%] Compiling shared platform\android\java_godot_lib_jni.cpp ...
+[  1%] Compiling shared platform\android\java_class_wrapper.cpp ...
+[  1%] Compiling shared platform\android\java_godot_wrapper.cpp ...
+[  1%] Compiling shared platform\android\java_godot_view_wrapper.cpp ...
+[  1%] Compiling shared platform\android\java_godot_io_wrapper.cpp ...
+[  1%] Compiling shared platform\android\jni_utils.cpp ...
+[  1%] Compiling shared platform\android\android_keys_utils.cpp ...
+[  2%] Compiling shared platform\android\display_server_android.cpp ...
+[  2%] Compiling shared platform\android\plugin\godot_plugin_jni.cpp ...
+[  2%] Compiling shared platform\android\vulkan_context_android.cpp ...
+[  2%] Compiling shared thirdparty\misc\ifaddrs-android.cc ...
+[  3%] Generating enabled modules header.
+[ 14%] Compiling modules\opencv\opencv.cpp ...
+[ 14%] Compiling modules\opencv\register_types.cpp ...
+[ 40%] progress_finish(["progress_finish"], [])
+[ 42%] Linking Static Library modules\libmodule_opencv.android.template_debug.arm64.a ...
+[ 42%] Linking Shared Library bin\libgodot.android.template_debug.arm64.so ...
+=====
+ld: error: undefined symbol: AMediaExtractor_new
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaExtractor_setDataSourceFd
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaExtractor_getTrackCount
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaExtractor_getTrackFormat
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaFormat_toString
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::decodeFrame()) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMEDIAFORMAT_KEY_MIME
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkVideoWriter::open(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, int, double, cv::Size_<int>, cv::VideoWriterParameters const&)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced 1 more times
+
+ld: error: undefined symbol: AMediaFormat_getString
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMEDIAFORMAT_KEY_WIDTH
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::decodeFrame()) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced 3 more times
+
+ld: error: undefined symbol: AMediaFormat_getInt32
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced 4 more times
+
+ld: error: undefined symbol: AMEDIAFORMAT_KEY_HEIGHT
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::decodeFrame()) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced 3 more times
+
+ld: error: undefined symbol: AMEDIAFORMAT_KEY_FRAME_RATE
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkVideoWriter::open(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, int, double, cv::Size_<int>, cv::VideoWriterParameters const&)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced 1 more times
+
+ld: error: undefined symbol: AMediaExtractor_selectTrack
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaCodec_createDecoderByType
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaCodec_configure
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkVideoWriter::open(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, int, double, cv::Size_<int>, cv::VideoWriterParameters const&)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaCodec_start
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkVideoWriter::open(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, int, double, cv::Size_<int>, cv::VideoWriterParameters const&)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaCodec_stop
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(deleter_AMediaCodec(AMediaCodec*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaCodec_delete
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(deleter_AMediaCodec(AMediaCodec*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkVideoWriter::close()) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaExtractor_delete
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(deleter_AMediaExtractor(AMediaExtractor*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: undefined symbol: AMediaFormat_delete
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::initCapture(char const*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(deleter_AMediaFormat(AMediaFormat*)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::decodeFrame()) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced 2 more times
+
+ld: error: undefined symbol: AMediaCodec_dequeueInputBuffer
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkCapture::decodeFrame()) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+>>> referenced by cap_android_mediandk.cpp
+>>>               cap_android_mediandk.cpp.o:(AndroidMediaNdkVideoWriter::writeBytes(unsigned char*, unsigned long)) in archive D:\OpenCV-android-sdk\sdk\native\staticlibs\arm64-v8a\libopencv_videoio.a
+
+ld: error: too many errors emitted, stopping now (use -error-limit=0 to see all errors)
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+
+=====
+scons: *** [bin\libgodot.android.template_debug.arm64.so] Error 1
+scons: building terminated because of errors.
+[Time elapsed: 00:00:49.527]
