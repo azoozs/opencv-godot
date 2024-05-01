@@ -1,0 +1,220 @@
+Import('env')
+
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+# Android Platform
+if env["platform"] == "android":
+	if env["arch"] == "arm64":
+		print(bcolors.OKGREEN + "________________________________________________________________________________________________________________________________________________________" + bcolors.ENDC )
+		print(bcolors.OKGREEN +  "\n Custom Module C++ for Godot Android  "+ env["arch"] +" ######################################################################################  \n" + bcolors.ENDC)
+		print(bcolors.OKGREEN + "________________________________________________________________________________________________________________________________________________________" + bcolors.ENDC )
+
+		env.add_source_files(env.modules_sources, "*.cpp")
+		
+		include_paths = ["D:/OpenCV-android-sdk/sdk/native/jni/include"]
+		lib_paths_release = ["D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a"]
+
+		libs_release = [
+			"libopencv_calib3d.a",
+			"libopencv_highgui.a",
+			"libopencv_video.a",
+			"libopencv_objdetect.a",
+			"libopencv_imgproc.a",
+			"libopencv_imgcodecs.a",
+			"libopencv_core.a",
+			"libopencv_dnn.a",
+			"libopencv_videoio.a",
+			"libopencv_stitching.a",
+			"libopencv_photo.a",
+			"libopencv_ml.a",
+			"libopencv_gapi.a",
+			"libopencv_flann.a",
+			"libopencv_features2d.a"
+		]
+
+
+
+		# final_libs_release = [
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[0] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[1] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[2] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[3] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[4] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[5] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[6] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[7] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[8] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[9] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[10] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[11] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[12] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[13] ),
+		# 	File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[14] ),
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libade.a' ), 
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libcpufeatures.a' ),   #
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libIlmImf.a' ),        #
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libittnotify.a' ),
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjpeg-turbo.a' ), #
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibopenjp2.a' ),
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibpng.a' ),        #
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibprotobuf.a' ),   #
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibtiff.a' ),       #
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a' ),       #
+		# 	#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtbb.a' ),           #
+		# 	File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtegra_hal.a' )       #
+		# ]
+
+
+		# start new edition
+		final_libs_release = [
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[0] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[1] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[2] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[3] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[4] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[5] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[6] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[7] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[8] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[9] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[10] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[11] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[12] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[13] ),
+			File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[14] ),
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibtiff.a' ),
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjpeg-turbo.a' ),
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibopenjp2.a' ),
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibpng.a' ),
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libIlmImf.a' ),
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libcpufeatures.a' ),
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtegra_hal.a' ), 
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a' ),       
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibprotobuf.a' ),   
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtbb.a' ),
+
+
+			#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libade.a' ), 
+			File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libittnotify.a' ),
+		]
+		# end new edition
+		
+
+		# start add flags to avoid some errors (important)
+		#env.Append(CXXFLAGS=["-frtti", "-fexceptions","-static"])
+		env.Append(CXXFLAGS=["-frtti", "-fexceptions"])
+		# to solve liblibwebp.a errors
+		env.Append(LINKFLAGS=["-Wl,--whole-archive", "D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a", "-Wl,--no-whole-archive"])
+		# end add these flags to avoid some errors (important)
+		
+		env.Append(CPPPATH=include_paths)
+		env.Append(LIBPATH = lib_paths_release)
+		env.Append(LIBS = final_libs_release)
+
+
+
+
+
+
+
+
+
+
+
+
+# Windows Platform
+if env["platform"] == "windows":
+	print(bcolors.OKGREEN + "________________________________________________________________________________________________________________________________________________________" + bcolors.ENDC )
+	print(bcolors.OKGREEN +  "\n Custom Module C++ for Godot Windows ######################################################################################  \n" + bcolors.ENDC)
+	print(bcolors.OKGREEN + "________________________________________________________________________________________________________________________________________________________" + bcolors.ENDC )
+	
+	env.add_source_files(env.modules_sources, "*.cpp")
+	include_paths = ["C:/vcpkg/installed/x64-windows-static/include"]
+	lib_paths_release = ['C:/vcpkg/installed/x64-windows-static/lib']
+
+	libs_release = ['leptonica-1.83.1', 
+		'tesseract53', 
+		'tiff',
+		'libcurl', 
+		'archive', 
+		'libpng16', 
+		'gif', 
+		'openjp2', 
+		'jpeg', 
+		'bz2', 
+		'zstd',
+		'libwebpdecoder', 
+		'lzma', 
+		'zlib', 
+		'lz4',
+		'libwebp', 
+		'libcrypto', 
+		'libsharpyuv', 
+		'crypt32', 
+		'opencv_calib3d4', 
+		'opencv_core4',
+		'opencv_dnn4', 
+		'opencv_features2d4', 
+		'opencv_flann4', 
+		'opencv_highgui4',
+		'opencv_imgcodecs4', 
+		'opencv_imgproc4', 
+		'opencv_ml4', 
+		'opencv_objdetect4', 
+		'opencv_photo4', 
+		'opencv_stitching4', 
+		'opencv_video4', 
+		'opencv_videoio4' ]
+
+	final_libs_release = [
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[0] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[1] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[2] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[3] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[4] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[5] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[6] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[7] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[8] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[9] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[10] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[11] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[12] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[13] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[14] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[15] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[16] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[17] + '.lib'),
+		File('C:/Program Files (x86)/Windows Kits/10/Lib/10.0.22621.0/um/x64/Crypt32.Lib'),
+		File('C:/Program Files (x86)/Windows Kits/10/Lib/10.0.22621.0/um/x64/User32.Lib'),
+		File('C:/Program Files (x86)/Windows Kits/10/Lib/10.0.22621.0/um/x64/ComDlg32.Lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[19] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[20] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[21] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[22] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[23] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[24] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[25] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[26] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[27] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[28] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[29] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[30] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[31] + '.lib'),
+		File('C:/vcpkg/installed/x64-windows-static/lib/' + libs_release[32] + '.lib') ]
+	
+	
+	env.Append(CPPPATH=include_paths)
+	env.Append(LIBPATH = lib_paths_release)
+	env.Append(LIBS = final_libs_release)
+
