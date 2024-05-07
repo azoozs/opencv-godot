@@ -14,8 +14,6 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-
-
 def get_platform(ndk_platform):
     # Use regular expression to find the integer part
     match = re.search(r'\d+', ndk_platform)
@@ -26,110 +24,205 @@ def get_platform(ndk_platform):
         # If no match found, return None or raise an exception, depending on your preference
         return None
 
+
+def link_opencv_4_0_1_arm64():
+	ndk_platform = "android-26"
+	env["ndk_platform"] = "android-26"
+	
+	if get_platform(ndk_platform) < 26:
+		print( bcolors.WARNING + "WARNING: android_arch=arm64 is not supported by ndk_platform lower than android-26; setting ndk_platform=android-29" + bcolors.ENDC)
+		env["ndk_platform"] = "android-26"
+	else:
+		print(bcolors.OKGREEN + " yes android_arch=arm64 is supported by ndk_platform equal or higher than android-26" + bcolors.ENDC)
+
+	print(bcolors.OKGREEN + "________________________________________________________________________________________________________________________________________________________" + bcolors.ENDC )
+	print(bcolors.OKGREEN +  "\n Custom Module C++ for Godot Android  "+ env["arch"] +" ######################################################################################  \n" + bcolors.ENDC)
+	print(bcolors.OKGREEN + "________________________________________________________________________________________________________________________________________________________" + bcolors.ENDC )
+
+	env.add_source_files(env.modules_sources, "*.cpp")
+	
+	include_paths = ["D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/jni/include"]
+	lib_paths_release = ["D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a"]
+
+	
+	libs_release = [
+		"libopencv_calib3d.a",
+		"libopencv_highgui.a",
+		"libopencv_video.a",
+		"libopencv_objdetect.a",
+		"libopencv_imgproc.a",
+		"libopencv_imgcodecs.a",
+		"libopencv_core.a",
+		"libopencv_dnn.a",
+		"libopencv_videoio.a",
+		"libopencv_stitching.a",
+		"libopencv_photo.a",
+		"libopencv_ml.a",
+		#"libopencv_gapi.a",
+		"libopencv_flann.a",
+		"libopencv_features2d.a"
+	]
+
+	final_libs_release = [
+		
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[0] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[1] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[2] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[3] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[4] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[5] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[6] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[7] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[8] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[9] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[10] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[11] ),
+		# File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[12] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[12] ),
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[13] ),
+		
+		# D:\opencv-4.0.1-android-sdk\opencv-4.0.1-android-sdk/OpenCV-android-sdk\sdk\native\3rdparty\libs\arm64-v8a
+		# libcpufeatures.a
+		# libIlmImf.a
+		# liblibjasper.a          not
+		# liblibjpeg-turbo.a
+		# liblibpng.a
+		# liblibprotobuf.a
+		# liblibtiff.a
+		# liblibwebp.a
+		# libquirc.a              not
+		# libtbb.a   
+		# libtegra_hal.a
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibtiff.a' ), #
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjpeg-turbo.a' ), #
+		#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibopenjp2.a' ),  # 4.9.0 only
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibpng.a' ), #
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libIlmImf.a' ),  #
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libcpufeatures.a' ),  # 
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtegra_hal.a' ),  #
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a' ), #      
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibprotobuf.a' ),  # 
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtbb.a' ), #
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libquirc.a' ), # 4.0.1 only
+		File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjasper.a' ), # 4.0.1 only
+		#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libade.a' ),   # basically commented out opencv 4.9.0
+		#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libittnotify.a' ), # 4.9.0 only
+	]
+	
+	# start add flags to avoid some errors (important)
+	#env.Append(CXXFLAGS=["-frtti", "-fexceptions","-static"])
+	env.Append(CXXFLAGS=["-frtti", "-fexceptions"]) # "-DANDROID_STL=gnustl_shared"
+	# to solve liblibwebp.a errors
+	# this comment removed webp.a erros  OpenCV 4.0.1  #env.Append(LINKFLAGS=["-Wl,--whole-archive", "D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a", "-Wl,--no-whole-archive"])
+	# end add these flags to avoid some errors (important)
+	
+	env.Append(CPPPATH=include_paths)
+	env.Append(LIBPATH=lib_paths_release)
+	env.Append(LIBS=final_libs_release)
+
+
+def link_opencv_4_9_0_arm64():
+	
+	ndk_platform = "android-26"
+	env["ndk_platform"] = "android-26"
+	
+	if get_platform(ndk_platform) < 26:
+		print( bcolors.WARNING + "WARNING: android_arch=arm64 is not supported by ndk_platform lower than android-26; setting ndk_platform=android-29" + bcolors.ENDC)
+		env["ndk_platform"] = "android-26"
+	else:
+		print(bcolors.OKGREEN + " yes android_arch=arm64 is supported by ndk_platform equal or higher than android-26" + bcolors.ENDC)
+
+	print(bcolors.OKGREEN + "________________________________________________________________________________________________________________________________________________________" + bcolors.ENDC )
+	print(bcolors.OKGREEN +  "\n Custom Module C++ for Godot Android  "+ env["arch"] +" ######################################################################################  \n" + bcolors.ENDC)
+	print(bcolors.OKGREEN + "________________________________________________________________________________________________________________________________________________________" + bcolors.ENDC )
+
+	env.add_source_files(env.modules_sources, "*.cpp")
+	
+	include_paths = ["D:/OpenCV-android-sdk/sdk/native/jni/include"]
+	lib_paths_release = ["D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a"]
+
+	
+	libs_release = [
+		"libopencv_calib3d.a",
+		"libopencv_highgui.a",
+		"libopencv_video.a",
+		"libopencv_objdetect.a",
+		"libopencv_imgproc.a",
+		"libopencv_imgcodecs.a",
+		"libopencv_core.a",
+		"libopencv_dnn.a",
+		"libopencv_videoio.a",
+		"libopencv_stitching.a",
+		"libopencv_photo.a",
+		"libopencv_ml.a",
+		"libopencv_gapi.a",
+		"libopencv_flann.a",
+		"libopencv_features2d.a"
+	]
+
+	final_libs_release = [
+		
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[0] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[1] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[2] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[3] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[4] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[5] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[6] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[7] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[8] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[9] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[10] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[11] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[12] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[13] ),
+		File('D:/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[14] ),
+		
+		# D:\opencv-4.0.1-android-sdk\OpenCV-android-sdk\sdk\native\3rdparty\libs\arm64-v8a
+		# libcpufeatures.a
+		# libIlmImf.a
+		# liblibjasper.a          not
+		# liblibjpeg-turbo.a
+		# liblibpng.a
+		# liblibprotobuf.a
+		# liblibtiff.a
+		# liblibwebp.a
+		# libquirc.a              not
+		# libtbb.a   
+		# libtegra_hal.a
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibtiff.a' ), #
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjpeg-turbo.a' ), #
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibopenjp2.a' ),  # 4.9.0 only
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibpng.a' ), #
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libIlmImf.a' ),  #
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libcpufeatures.a' ),  # 
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtegra_hal.a' ),  #
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a' ), #      
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibprotobuf.a' ),  # 
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtbb.a' ), #
+		# File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libquirc.a' ), # 4.0.1 only
+		# File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjasper.a' ), # 4.0.1 only
+		#File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libade.a' ),   # basically commented out opencv 4.9.0
+		File('D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libittnotify.a' ), # 4.9.0 only
+	]
+	
+	# start add flags to avoid some errors (important)
+	#env.Append(CXXFLAGS=["-frtti", "-fexceptions","-static"])
+	env.Append(CXXFLAGS=["-frtti", "-fexceptions"]) # "-DANDROID_STL=gnustl_shared"
+	# to solve liblibwebp.a errors
+	# this comment removed webp.a erros  OpenCV 4.0.1  #env.Append(LINKFLAGS=["-Wl,--whole-archive", "D:/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a", "-Wl,--no-whole-archive"])
+	# end add these flags to avoid some errors (important)
+	
+	env.Append(CPPPATH=include_paths)
+	env.Append(LIBPATH=lib_paths_release)
+	env.Append(LIBS=final_libs_release)
+
+
+
 # Android Platform
 if env["platform"] == "android":
-
 	if env["arch"] == "arm64":
-		
-		ndk_platform = "android-29"
-		env["ndk_platform"] = "android-29"
-		
-		if get_platform(ndk_platform) < 29:
-			print( bcolors.WARNING + "WARNING: android_arch=arm64 is not supported by ndk_platform lower than android-29; setting ndk_platform=android-29" + bcolors.ENDC)
-			env["ndk_platform"] = "android-29"
-		else:
-			print(bcolors.OKGREEN + " yes android_arch=arm64 is supported by ndk_platform equal or higher than android-29" + bcolors.ENDC)
-
-		print(bcolors.OKGREEN + "________________________________________________________________________________________________________________________________________________________" + bcolors.ENDC )
-		print(bcolors.OKGREEN +  "\n Custom Module C++ for Godot Android  "+ env["arch"] +" ######################################################################################  \n" + bcolors.ENDC)
-		print(bcolors.OKGREEN + "________________________________________________________________________________________________________________________________________________________" + bcolors.ENDC )
-
-		env.add_source_files(env.modules_sources, "*.cpp")
-		
-		include_paths = ["D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/jni/include"]
-		lib_paths_release = ["D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a"]
-
-		
-		libs_release = [
-			"libopencv_calib3d.a",
-			"libopencv_highgui.a",
-			"libopencv_video.a",
-			"libopencv_objdetect.a",
-			"libopencv_imgproc.a",
-			"libopencv_imgcodecs.a",
-			"libopencv_core.a",
-			"libopencv_dnn.a",
-			"libopencv_videoio.a",
-			"libopencv_stitching.a",
-			"libopencv_photo.a",
-			"libopencv_ml.a",
-			#"libopencv_gapi.a",
-			"libopencv_flann.a",
-			"libopencv_features2d.a"
-		]
-
-		final_libs_release = [
-			
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[0] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[1] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[2] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[3] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[4] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[5] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[6] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[7] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[8] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[9] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[10] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[11] ),
-			# File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[12] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[12] ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[13] ),
-			
-			# D:\opencv-4.0.1-android-sdk\opencv-4.0.1-android-sdk/OpenCV-android-sdk\sdk\native\3rdparty\libs\arm64-v8a
-			# libcpufeatures.a
-			# libIlmImf.a
-			# liblibjasper.a          not
-			# liblibjpeg-turbo.a
-			# liblibpng.a
-			# liblibprotobuf.a
-			# liblibtiff.a
-			# liblibwebp.a
-			# libquirc.a              not
-			# libtbb.a   
-			# libtegra_hal.a
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibtiff.a' ), #
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjpeg-turbo.a' ), #
-			#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibopenjp2.a' ),  # 4.9.0 only
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibpng.a' ), #
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libIlmImf.a' ),  #
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libcpufeatures.a' ),  # 
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtegra_hal.a' ),  #
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a' ), #      
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibprotobuf.a' ),  # 
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtbb.a' ), #
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libquirc.a' ), # 4.0.1 only
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjasper.a' ), # 4.0.1 only
-			#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libade.a' ),   # basically commented out opencv 4.9.0
-			#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libittnotify.a' ), # 4.9.0 only
-		]
-		
-		# start add flags to avoid some errors (important)
-		#env.Append(CXXFLAGS=["-frtti", "-fexceptions","-static"])
-		env.Append(CXXFLAGS=["-frtti", "-fexceptions"]) # "-DANDROID_STL=gnustl_shared"
-		# to solve liblibwebp.a errors
-		# this comment removed webp.a erros  OpenCV 4.0.1  #env.Append(LINKFLAGS=["-Wl,--whole-archive", "D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a", "-Wl,--no-whole-archive"])
-		# end add these flags to avoid some errors (important)
-		
-		env.Append(CPPPATH=include_paths)
-		env.Append(LIBPATH=lib_paths_release)
-		env.Append(LIBS=final_libs_release)
-
-
-
-
-
-
+		link_opencv_4_9_0_arm64()
 
 
 
