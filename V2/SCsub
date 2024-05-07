@@ -86,7 +86,7 @@ if env["platform"] == "android":
 			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[12] ),
 			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/staticlibs/arm64-v8a/' + libs_release[13] ),
 			
-			# D:\opencv-4.0.1-android-sdk\OpenCV-android-sdk\sdk\native\3rdparty\libs\arm64-v8a
+			# D:\opencv-4.0.1-android-sdk\opencv-4.0.1-android-sdk/OpenCV-android-sdk\sdk\native\3rdparty\libs\arm64-v8a
 			# libcpufeatures.a
 			# libIlmImf.a
 			# liblibjasper.a          not
@@ -100,7 +100,7 @@ if env["platform"] == "android":
 			# libtegra_hal.a
 			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibtiff.a' ), #
 			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjpeg-turbo.a' ), #
-			#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibopenjp2.a' ),
+			#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibopenjp2.a' ),  # 4.9.0 only
 			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibpng.a' ), #
 			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libIlmImf.a' ),  #
 			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libcpufeatures.a' ),  # 
@@ -108,10 +108,10 @@ if env["platform"] == "android":
 			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a' ), #      
 			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibprotobuf.a' ),  # 
 			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libtbb.a' ), #
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libquirc.a' ),
-			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjasper.a' ),
+			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libquirc.a' ), # 4.0.1 only
+			File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/liblibjasper.a' ), # 4.0.1 only
 			#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libade.a' ),   # basically commented out opencv 4.9.0
-			#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libittnotify.a' ),
+			#File('D:/opencv-4.0.1-android-sdk/OpenCV-android-sdk/sdk/native/3rdparty/libs/arm64-v8a/libittnotify.a' ), # 4.9.0 only
 		]
 		
 		# start add flags to avoid some errors (important)
