@@ -1,5 +1,5 @@
 # opencv-godot
-Godot OpenCV
+Godot OpenCV V2
 
 
 
