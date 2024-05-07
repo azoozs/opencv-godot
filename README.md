@@ -10,7 +10,7 @@ env.Append(LINKFLAGS=["-Wl,--whole-archive", "D:/opencv-4.0.1-android-sdk/OpenCV
 
 
 
-but when I try run the Project from Godot on Android `remote debug`:
+but when I try run the Project from Godot on Android `remote debug` show this error:
 
 ```
 Project export for platform: Android - Failed.
