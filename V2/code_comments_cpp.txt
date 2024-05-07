@@ -1,0 +1,52 @@
+
+/*
+// this work perfectly to load PNG image (RGBA)
+Ref<ImageTexture> opencv::test_load_png_image_from_path(String apath) {
+	String gd = apath;
+	std::string cpp_path;
+	for (int i = 0; i < gd.length(); i++) {
+		cpp_path += gd[i];
+	}
+	std::cout << "\ncpp_path: " << cpp_path << std::endl;
+
+	cv::Mat image_opencv = cv::imread(cpp_path, cv::IMREAD_UNCHANGED); // Load image with alpha channel
+
+	if (image_opencv.empty()) {
+		// Handle error when the image fails to load
+		std::cout << "Error: Failed to load the image from the specified path." << std::endl;
+		return Ref<ImageTexture>(); // Return an empty ImageTexture
+	}
+
+	cv::Mat rgba_image;
+	cv::cvtColor(image_opencv, rgba_image, cv::COLOR_BGRA2RGBA); // Convert image to RGBA
+
+
+	// convert cv Mat data to bytes
+	PoolByteArray bytes;
+	int width = rgba_image.cols;
+	int height = rgba_image.rows;
+	int sizear = width * height * rgba_image.channels();
+	bytes.resize(sizear);
+
+	if (rgba_image.isContinuous()) {
+		//try bytes.read().ptr() for reverse
+		std::memcpy(bytes.write().ptr(), rgba_image.ptr(), sizear);
+	} else {
+		for (int i = 0; i < sizeof(rgba_image); i++) {
+			std::memcpy(bytes.write().ptr(), rgba_image.ptr(i), sizear);
+		}
+	}
+	// end of convert
+
+
+	// Construct Image and ImageTexture to pass to Godot
+	Ref<Image> img;
+	img.instance();
+
+	img->create(width, height, false, img->FORMAT_RGBA8, bytes);
+	Ref<ImageTexture> imageTex;
+	imageTex.instance();
+	imageTex->create_from_image(img);
+
+	return imageTex;
+}*/
